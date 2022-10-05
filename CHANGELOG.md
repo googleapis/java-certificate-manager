@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/googleapis/java-certificate-manager/compare/v0.5.3...v0.6.0) (2022-10-03)
+
+
+### Features
+
+* Added support for Private Trust to Certificate Manager API ([#110](https://github.com/googleapis/java-certificate-manager/issues/110)) ([f5a2403](https://github.com/googleapis/java-certificate-manager/commit/f5a2403e24d53b2ae5eafd74437c20077e92be36))
+
+
+### Documentation
+
+* See https://cloud.google.com/certificate-manager/docs/deploy-google-managed-cas ([f5a2403](https://github.com/googleapis/java-certificate-manager/commit/f5a2403e24d53b2ae5eafd74437c20077e92be36))
+
 ## [0.5.3](https://github.com/googleapis/java-certificate-manager/compare/v0.5.2...v0.5.3) (2022-10-03)
 
 
