@@ -16,35 +16,30 @@
 
 package com.google.cloud.certificatemanager.v1.samples;
 
-// [START certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
-import com.google.cloud.certificatemanager.v1.CertificateManagerSettings;
-import java.time.Duration;
+// [START certificatemanager_v1_generated_CertificateManager_CreateCertificate_LocationnameCertificateString_sync]
+import com.google.cloud.certificatemanager.v1.Certificate;
+import com.google.cloud.certificatemanager.v1.CertificateManagerClient;
+import com.google.cloud.certificatemanager.v1.LocationName;
 
-public class SyncGetCertificate {
+public class SyncCreateCertificateLocationnameCertificateString {
 
   public static void main(String[] args) throws Exception {
-    syncGetCertificate();
+    syncCreateCertificateLocationnameCertificateString();
   }
 
-  public static void syncGetCertificate() throws Exception {
+  public static void syncCreateCertificateLocationnameCertificateString() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    CertificateManagerSettings.Builder certificateManagerSettingsBuilder =
-        CertificateManagerSettings.newBuilder();
-    certificateManagerSettingsBuilder
-        .getCertificateSettings()
-        .setRetrySettings(
-            certificateManagerSettingsBuilder
-                .getCertificateSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
-    CertificateManagerSettings certificateManagerSettings =
-        certificateManagerSettingsBuilder.build();
+    try (CertificateManagerClient certificateManagerClient = CertificateManagerClient.create()) {
+      LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
+      Certificate certificate = Certificate.newBuilder().build();
+      String certificateId = "certificateId-644529902";
+      Certificate response =
+          certificateManagerClient.createCertificateAsync(parent, certificate, certificateId).get();
+    }
   }
 }
-// [END certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
+// [END certificatemanager_v1_generated_CertificateManager_CreateCertificate_LocationnameCertificateString_sync]

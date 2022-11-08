@@ -16,35 +16,39 @@
 
 package com.google.cloud.certificatemanager.v1.samples;
 
-// [START certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
-import com.google.cloud.certificatemanager.v1.CertificateManagerSettings;
-import java.time.Duration;
+// [START certificatemanager_v1_generated_CertificateManager_ListLocations_async]
+import com.google.api.core.ApiFuture;
+import com.google.cloud.certificatemanager.v1.CertificateManagerClient;
+import com.google.cloud.location.ListLocationsRequest;
+import com.google.cloud.location.Location;
 
-public class SyncGetCertificate {
+public class AsyncListLocations {
 
   public static void main(String[] args) throws Exception {
-    syncGetCertificate();
+    asyncListLocations();
   }
 
-  public static void syncGetCertificate() throws Exception {
+  public static void asyncListLocations() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    CertificateManagerSettings.Builder certificateManagerSettingsBuilder =
-        CertificateManagerSettings.newBuilder();
-    certificateManagerSettingsBuilder
-        .getCertificateSettings()
-        .setRetrySettings(
-            certificateManagerSettingsBuilder
-                .getCertificateSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
-    CertificateManagerSettings certificateManagerSettings =
-        certificateManagerSettingsBuilder.build();
+    try (CertificateManagerClient certificateManagerClient = CertificateManagerClient.create()) {
+      ListLocationsRequest request =
+          ListLocationsRequest.newBuilder()
+              .setName("name3373707")
+              .setFilter("filter-1274492040")
+              .setPageSize(883849137)
+              .setPageToken("pageToken873572522")
+              .build();
+      ApiFuture<Location> future =
+          certificateManagerClient.listLocationsPagedCallable().futureCall(request);
+      // Do something.
+      for (Location element : future.get().iterateAll()) {
+        // doThingsWith(element);
+      }
+    }
   }
 }
-// [END certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
+// [END certificatemanager_v1_generated_CertificateManager_ListLocations_async]

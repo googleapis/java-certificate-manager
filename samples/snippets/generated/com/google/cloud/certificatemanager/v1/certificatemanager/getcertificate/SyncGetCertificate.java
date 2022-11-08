@@ -16,9 +16,11 @@
 
 package com.google.cloud.certificatemanager.v1.samples;
 
-// [START certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
-import com.google.cloud.certificatemanager.v1.CertificateManagerSettings;
-import java.time.Duration;
+// [START certificatemanager_v1_generated_CertificateManager_GetCertificate_sync]
+import com.google.cloud.certificatemanager.v1.Certificate;
+import com.google.cloud.certificatemanager.v1.CertificateManagerClient;
+import com.google.cloud.certificatemanager.v1.CertificateName;
+import com.google.cloud.certificatemanager.v1.GetCertificateRequest;
 
 public class SyncGetCertificate {
 
@@ -32,19 +34,13 @@ public class SyncGetCertificate {
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    CertificateManagerSettings.Builder certificateManagerSettingsBuilder =
-        CertificateManagerSettings.newBuilder();
-    certificateManagerSettingsBuilder
-        .getCertificateSettings()
-        .setRetrySettings(
-            certificateManagerSettingsBuilder
-                .getCertificateSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
-    CertificateManagerSettings certificateManagerSettings =
-        certificateManagerSettingsBuilder.build();
+    try (CertificateManagerClient certificateManagerClient = CertificateManagerClient.create()) {
+      GetCertificateRequest request =
+          GetCertificateRequest.newBuilder()
+              .setName(CertificateName.of("[PROJECT]", "[LOCATION]", "[CERTIFICATE]").toString())
+              .build();
+      Certificate response = certificateManagerClient.getCertificate(request);
+    }
   }
 }
-// [END certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
+// [END certificatemanager_v1_generated_CertificateManager_GetCertificate_sync]

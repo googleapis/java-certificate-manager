@@ -16,35 +16,30 @@
 
 package com.google.cloud.certificatemanager.v1.samples;
 
-// [START certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
+// [START certificatemanager_v1_generated_CertificateManager_Create_SetCredentialsProvider_sync]
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.cloud.certificatemanager.v1.CertificateManagerClient;
 import com.google.cloud.certificatemanager.v1.CertificateManagerSettings;
-import java.time.Duration;
+import com.google.cloud.certificatemanager.v1.myCredentials;
 
-public class SyncGetCertificate {
+public class SyncCreateSetCredentialsProvider {
 
   public static void main(String[] args) throws Exception {
-    syncGetCertificate();
+    syncCreateSetCredentialsProvider();
   }
 
-  public static void syncGetCertificate() throws Exception {
+  public static void syncCreateSetCredentialsProvider() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    CertificateManagerSettings.Builder certificateManagerSettingsBuilder =
-        CertificateManagerSettings.newBuilder();
-    certificateManagerSettingsBuilder
-        .getCertificateSettings()
-        .setRetrySettings(
-            certificateManagerSettingsBuilder
-                .getCertificateSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
     CertificateManagerSettings certificateManagerSettings =
-        certificateManagerSettingsBuilder.build();
+        CertificateManagerSettings.newBuilder()
+            .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+            .build();
+    CertificateManagerClient certificateManagerClient =
+        CertificateManagerClient.create(certificateManagerSettings);
   }
 }
-// [END certificatemanager_v1_generated_CertificateManagerSettings_GetCertificate_sync]
+// [END certificatemanager_v1_generated_CertificateManager_Create_SetCredentialsProvider_sync]
